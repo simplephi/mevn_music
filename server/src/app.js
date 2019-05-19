@@ -10,11 +10,11 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-// Ini nanti ambil semua method API
+// Ini nanti ambil semua method API dan di kirim ke frontend
 require('./routes')(app)
 
-sequelize.sync()
+sequelize.sync({ force: false })
   .then(() => {
     app.listen(config.port)
-    console.log(`Server start boscuu di ${config.port}`)
+    console.log(`Server start di ${config.port} sayang`)
   })

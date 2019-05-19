@@ -3,29 +3,24 @@
     <v-flex xs6 offset-xs3>
       <div class ="white elevation-2">
         <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Register</v-toolbar-title>
+          <v-toolbar-title>Login</v-toolbar-title>
         </v-toolbar>
         <div class="pl-4 pr-4 pt-2 pb-2">
-          <form
-            name="mevn-music-form"
-            autocomplete="off">
-              <v-text-field
+            <v-text-field
                     v-model="email"
                     label="Email"
-                    required>
-              </v-text-field>
+                    required
+                  ></v-text-field>
               <v-text-field
                v-model="password"
-               type="password"
                :counter="32"
-               autocomplete="new-password"
+               type="password"
                label="Password">
-              </v-text-field>
-          </form>
+             </v-text-field>
             <br/>
             <div class="error" v-html="error"></div>
             <br/>
-            <v-btn dark class="cyan" @click="register">Register</v-btn>
+            <v-btn dark class="cyan" @click="login">Login</v-btn>
           </div>
       </div>
   </v-flex>
@@ -43,9 +38,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
